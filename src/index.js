@@ -144,7 +144,7 @@ class LinesEllipsis extends React.Component {
     const ndEllipsis = this.canvas.lastElementChild
     let ndPrevUnit = prevSibling(ndEllipsis, 2)
 
-    const isSafari = ua.indexOf('safari') != -1 && ua.indexOf('chrome') <= -1
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
     while (ndPrevUnit &&
       (
