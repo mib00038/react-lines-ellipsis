@@ -143,8 +143,12 @@ class LinesEllipsis extends React.Component {
     }).join('') + `<span class='LinesEllipsis-ellipsis'>${this.props.ellipsis}</span>`
     const ndEllipsis = this.canvas.lastElementChild
     let ndPrevUnit = prevSibling(ndEllipsis, 2)
+
+    const isSafari = ua.indexOf('safari') != -1 && ua.indexOf('chrome') <= -1
+
     while (ndPrevUnit &&
       (
+        isSafari ||
         ndEllipsis.offsetTop > maxOffsetTop || // IE & Edge: doesn't support <wbr>
         ndEllipsis.offsetHeight > ndPrevUnit.offsetHeight ||
         ndEllipsis.offsetTop > ndPrevUnit.offsetTop
